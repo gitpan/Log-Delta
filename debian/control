@@ -9,5 +9,6 @@ Standards-Version: 3.6.1
 Package: liblog-delta-perl
 Architecture: all
 Depends: ${perl:Depends}, ${misc:Depends}, 
+Conflicts: libdebug-perl
 Description:  Perl Logging object with relative time measurements
  .

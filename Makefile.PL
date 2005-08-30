@@ -3,13 +3,13 @@ use inc::Module::Install;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 
-my $version = '0.01';
+my $version = '0.02';
 my $name    = 'Log::Delta';
 my $fname   = "Log-Delta-$version";
 
 my $prereqs = {
     'Test::More'        => 0,
-    'Class::Singleton'  => 0,
+#    'Class::Singleton'  => 0,
 };
 
 sub MY::postamble { "
@@ -22,7 +22,7 @@ changes:
                                 
 deb: changes
 	(head -1 debian/changelog | grep $version) || exit 1
-	rm -f $fname.tar.gz
+	rm -f $fname.tar.gz *.deb *.changes
 	-chmod 755 debian/rules
 	\$(MAKE) dist
 	tar zxvf $fname.tar.gz

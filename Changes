@@ -1,4 +1,10 @@
 Changelog for Perl extension Log::Delta
 
+Tue Aug 30 17:45:17 CEST 2005  Mark Lawrence <nomad@null.net>
+  * Temporary addition of debug.pm until the real module is indexed properly on CPAN.
+
+Wed Jul  6 20:53:58 CEST 2005  Mark Lawrence <nomad@null.net>
+  tagged 0.01
+
 Wed Jul  6 18:59:20 CEST 2005  Mark Lawrence <nomad@null.net>
   * Initial Revision

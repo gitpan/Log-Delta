@@ -10,6 +10,7 @@ inc/Module/Install/Makefile.pm
 inc/Module/Install/MakeMaker.pm
 inc/Module/Install/Metadata.pm
 lib/Log/Delta.pm
+lib/debug.pm
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP

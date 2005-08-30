@@ -14,17 +14,39 @@ use warnings;
 use Time::HiRes qw(time);
 use Data::Dumper;
 
+our $VERSION = 0.02;
 our $AUTOLOAD;
 our @ISA;
 
 
-BEGIN {
-    eval {require NCGI::Singleton; @ISA = ('NCGI::Singleton');};
-    if ($@) {
-        require Class::Singleton;
-        @ISA = ('Class::Singleton');
-    }
-}
+#BEGIN {
+#    eval {require NCGI::Singleton; @ISA = ('NCGI::Singleton');};
+#    if ($@) {
+#        require Class::Singleton;
+#        @ISA = ('Class::Singleton');
+#    }
+#}
+
+#
+# This is lifted from NCGI::Singleton so there are no circular dependencies
+# because NCGI is about to depend on Log::Delta because the 'debug'
+# module does not index on CPAN, and I'm including it here.
+#
+
+sub instance {
+    my $class  = shift;
+
+    # get a reference to the _instance variable in the $class package
+    no strict 'refs';
+    my $instance = \${ "$class\::_instance" };
+    return $$instance if ($ENV{"NCGI_SINGLETON_$class"});
+
+    debug::log("$class->_new_instance ",caller) if(DEBUG);
+    $$instance = $class->_new_instance(@_);
+    $ENV{"NCGI_SINGLETON_$class"} = join(' ', caller);
+    return $$instance;
+};
+
 
 
 sub _new_instance {
