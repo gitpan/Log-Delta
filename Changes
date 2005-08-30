@@ -1,5 +1,8 @@
 Changelog for Perl extension Log::Delta
 
+Tue Aug 30 17:54:24 CEST 2005  Mark Lawrence <nomad@null.net>
+  * Removed eroneous call to debug::log in ->instance()
+
 Tue Aug 30 17:45:17 CEST 2005  Mark Lawrence <nomad@null.net>
   * Temporary addition of debug.pm until the real module is indexed properly on CPAN.
 

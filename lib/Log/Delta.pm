@@ -14,7 +14,7 @@ use warnings;
 use Time::HiRes qw(time);
 use Data::Dumper;
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 our $AUTOLOAD;
 our @ISA;
 
@@ -41,7 +41,6 @@ sub instance {
     my $instance = \${ "$class\::_instance" };
     return $$instance if ($ENV{"NCGI_SINGLETON_$class"});
 
-    debug::log("$class->_new_instance ",caller) if(DEBUG);
     $$instance = $class->_new_instance(@_);
     $ENV{"NCGI_SINGLETON_$class"} = join(' ', caller);
     return $$instance;
